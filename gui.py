@@ -656,9 +656,15 @@ class GUI(LayeredUpdates):
                 cost,
                 passable))
 
+        print("Done Moving")
+        print(self.get_powerup_at_screen_pos(pos))
+
         if (self.get_powerup_at_screen_pos(pos)):
-            PUP = get_powerup_at_screen_pos(pos)
+            print("Powerup found")
+            PUP = self.get_powerup_at_screen_pos(pos)
+            print(PUP)
             tile_pos = self.map.tile_coords(pos)
+            
             PUP.activate_powerup(tile_pos)
 
                 
@@ -669,6 +675,8 @@ class GUI(LayeredUpdates):
         """
         # Get the unit's tile position.
         tile_pos = self.map.tile_coords(pos)
+        print("getting units at tile position: ")
+        print(tile_pos)
         return unit.base_unit.BaseUnit.get_unit_at_pos(tile_pos)
 
     def get_powerup_at_screen_pos(self, pos):
@@ -676,9 +684,9 @@ class GUI(LayeredUpdates):
         Gets the powerup at a specified screen position ((x,y) tuple).
         Returns None if no unit.
         """
-        # Get the powerups's tile position.
-        tile_pos = self.map.tile_coords(pos)
-        return powerups.base_powerup.powerup.get_powerup_at_pos(tile_pos)
+        print("getting powerups at screen position: ")
+        print(pos)
+        return powerups.base_powerup.powerup.get_powerup_at_pos(pos)
         
     def update_unit_rect(self, unit):
         """
