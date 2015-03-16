@@ -673,6 +673,15 @@ class GUI(LayeredUpdates):
         screen_x, screen_y = self.map.screen_coords((x, y))
         unit.rect.x = screen_x
         unit.rect.y = screen_y
+
+    def update_powerup_rect(self, powerup):
+        """
+        Scales a powerups's display rectangle to screen coordiantes.
+        """
+        x, y = powerup.tile_x, powerup.tile_y
+        screen_x, screen_y = self.map.screen_coords((x, y))
+        powerup.rect.x = screen_x
+        powerup.rect.y = screen_y
         
     def update(self):
         """
