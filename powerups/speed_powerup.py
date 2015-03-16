@@ -1,4 +1,5 @@
 from powerups.base_powerup import powerup
+from unit import *
 import unit, helper, powerups
 from tiles import Tile
 import pygame
@@ -29,8 +30,9 @@ class speed_powerup(powerup):
         Upgrades the speed of unit at given tile position by 2
         """
 
-        # powerup_unit = unit.base_unit.BaseUnit.get_unit_at_pos(pos)
-        # powerup_unit.speed += 2
-        (unit.base_unit.BaseUnit.get_unit_at_pos(pos)).speed += 2
+        print("activating powerup")
+        print(unit.base_unit.BaseUnit.get_unit_at_pos(pos))
+        powerup_unit = unit.base_unit.BaseUnit.get_unit_at_pos(pos)
+        powerup_unit.speed += 2
 
 powerups.powerup_types["speed_powerup"] = speed_powerup

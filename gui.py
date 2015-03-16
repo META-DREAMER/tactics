@@ -665,7 +665,7 @@ class GUI(LayeredUpdates):
             print(PUP)
             tile_pos = self.map.tile_coords(pos)
             
-            PUP.activate_powerup(tile_pos)
+            PUP.activate_powerup(pos)
 
                 
     def get_unit_at_screen_pos(self, pos):
