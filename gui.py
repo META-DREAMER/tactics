@@ -1,7 +1,7 @@
 import sys, pygame
 from pygame.sprite import LayeredUpdates
 from collections import namedtuple
-import tiles, unit, animation, gather
+import tiles, unit, animation, gather, powerups
 from unit import *
 from powerups import *
 from effects.explosion import Explosion

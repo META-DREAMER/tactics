@@ -20,25 +20,7 @@ class speed_powerup(powerup):
         super().__init__(**keywords)
 
 
-        #set unit specific things.
-        self.type = "Speed Powerup"
-        
-    def speed_up(self, tile, pos):
-        """
-        Returns whether or not this unit can move over a certain tile.
-        """
-        # Return default
-        if not super().is_passable(tile, pos):
-            return False
-            
-        # We can't pass through enemy units.
-        u = BaseUnit.get_unit_at_pos(pos)
-        if u and u.team != self.team and isinstance(u, GroundUnit):
-            return False
-        
-        #ground units can't travel over water or through walls
-        if (tile.type == 'water' or tile.type == 'wall'):
-            return False
+        #set powerup specific things.
+        self.type = "speed_powerup"
 
-        return True
-
+powerups.powerup_types["speed_powerup"] = speed_powerup
