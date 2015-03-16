@@ -25,13 +25,20 @@ class healthpack_powerup(powerup):
 
     def activate_powerup(self):
         """
-        Upgrades the speed of unit at given tile position by 2
+        Upgrades the health of unit that picked up the powerup by 10 upto its max health
         """
+        #get unit at position of powerup
         powerup_unit = unit.base_unit.BaseUnit.get_unit_at_pos(self.tile_pos)
+
+        #add 10 to units health
         powerup_unit.health += 10
+
+        #cap health at max
         if (powerup_unit.health > powerup_unit.max_health):
             powerup_unit.health = powerup_unit.max_health
-        
+
+        #redraw unit and remove powerup
+        powerup_unit._update_image()
         self.deactivate()
 
 powerups.powerup_types["healthpack_powerup"] = healthpack_powerup

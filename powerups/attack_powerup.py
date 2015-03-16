@@ -25,13 +25,16 @@ class attack_powerup(powerup):
 
     def activate_powerup(self):
         """
-        Upgrades the speed of unit at given tile position by 2
+        Upgrades the damage of unit at given tile position by 2
         """
+        #get unit at position of powerup
         powerup_unit = unit.base_unit.BaseUnit.get_unit_at_pos(self.tile_pos)
 
+        #increase damage of the unit by 2 if its not a transport unit
         if not (powerup_unit.type == "Transport"):
             powerup_unit.damage += 2
 
+        #remove the powerup
         self.deactivate()
 
 powerups.powerup_types["attack_powerup"] = attack_powerup

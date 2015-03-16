@@ -28,9 +28,12 @@ class speed_powerup(powerup):
         Upgrades the speed of unit at given tile position by 2
         """
 
+        #get unit at position of powerup
         powerup_unit = unit.base_unit.BaseUnit.get_unit_at_pos(self.tile_pos)
+        #increase speed of unit by 2
         powerup_unit.speed += 2
 
+        #remove powerup
         self.deactivate()
 
 
