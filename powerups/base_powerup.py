@@ -16,8 +16,6 @@ class powerup(Sprite):
     
     active_units = pygame.sprite.LayeredUpdates()
     
-    health_font = bmpfont.BitmapFont("assets/healthfont.png", 6, 7, 48)
-    
     def __init__(self,
                  tile_x = None,
                  tile_y = None,
@@ -30,3 +28,57 @@ class powerup(Sprite):
         self.tile_x = tile_x
         self.tile_y = tile_y
         self._angle = angle
+
+        #set required pygame things.
+        self.image = None
+        self.rect = pygame.Rect(0, 0, SIZE, SIZE)
+        self._update_image()
+        
+        if activate:
+            self.activate()
+
+    @property
+    def tile_pos(self):
+        """
+        Returns the unit's tile position.
+        """
+        return (self.tile_x, self.tile_y)
+
+    def _update_image(self):
+        """
+        Re-renders the powerup's image.
+        """
+        # Pick out the right sprite depending on the team
+        subrect = pygame.Rect(self.team * SIZE,
+                              0,
+                              self.rect.w,
+                              self.rect.h)
+        try:
+            subsurf = self._base_image.subsurface(subrect)
+        except ValueError:
+            # No sprite for this team
+            raise ValueError(
+                "Class {} does not have a sprite for team {}!".format(
+                    self.__class__.__name__, self.team))
+        except AttributeError:
+            # No image is loaded
+            return
+        
+        # Rotate the sprite
+        self.image = pygame.transform.rotate(subsurf, self._angle)
+
+    def activate(self):
+        """
+        Adds this unit to the active roster.
+        """
+        if not self._active:
+            self._active = True
+            BaseUnit.active_units.add(self)
+    
+    def deactivate(self):
+        """
+        Removes this unit from the active roster.
+        """
+        if self._active:
+            self._active = False
+            BaseUnit.active_units.remove(self)

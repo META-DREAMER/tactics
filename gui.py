@@ -3,6 +3,7 @@ from pygame.sprite import LayeredUpdates
 from collections import namedtuple
 import tiles, unit, animation, gather
 from unit import *
+from powerups import *
 from effects.explosion import Explosion
 from sounds import SoundManager
 
