@@ -23,4 +23,12 @@ class speed_powerup(powerup):
         #set powerup specific things.
         self.type = "speed_powerup"
 
+
+    def activate_powerup(self, pos):
+        """
+        Upgrades the speed of unit at given tile position by 2
+        """
+        powerup_unit = unit.base_unit.BaseUnit.get_unit_at_pos(pos)
+        powerup_unit.speed += 2
+
 powerups.powerup_types["speed_powerup"] = speed_powerup

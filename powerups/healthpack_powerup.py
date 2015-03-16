@@ -22,5 +22,6 @@ class healthpack_powerup(powerup):
 
         #set powerup specific things.
         self.type = "healthpack_powerup"
+    
 
 powerups.powerup_types["healthpack_powerup"] = healthpack_powerup

@@ -472,7 +472,7 @@ class GUI(LayeredUpdates):
                 raise Exception ("Expected powerup definitions")
         line = map_file.readline()
         
-        # Create the units
+        # Create the powerups
         while line.find("POWER-UPS END") < 0:
             line = line.rstrip()
             line = line.split(' ')
@@ -655,6 +655,12 @@ class GUI(LayeredUpdates):
                 pos,
                 cost,
                 passable))
+
+        if (get_powerup_at_screen_pos(pos)):
+            PUP = get_powerup_at_screen_pos(pos)
+            tile_pos = self.map.tile_coords(pos)
+            PUP.activate_powerup(tile_pos)
+
                 
     def get_unit_at_screen_pos(self, pos):
         """
@@ -664,6 +670,15 @@ class GUI(LayeredUpdates):
         # Get the unit's tile position.
         tile_pos = self.map.tile_coords(pos)
         return unit.base_unit.BaseUnit.get_unit_at_pos(tile_pos)
+
+    def get_powerup_at_screen_pos(self, pos):
+        """
+        Gets the powerup at a specified screen position ((x,y) tuple).
+        Returns None if no unit.
+        """
+        # Get the powerups's tile position.
+        tile_pos = self.map.tile_coords(pos)
+        return powerups.base_powerup.powerup.get_powerup_at_pos(tile_pos)
         
     def update_unit_rect(self, unit):
         """
