@@ -23,4 +23,13 @@ class attack_powerup(powerup):
         #set unit specific things.
         self.type = "attack_powerup"
 
+    def activate_powerup(self, pos):
+        """
+        Upgrades the speed of unit at given tile position by 2
+        """
+        powerup_unit = unit.base_unit.BaseUnit.get_unit_at_pos(pos)
+
+        if not (powerup_unit.type == "Transport"):
+            powerup_unit.attack += 2
+
 powerups.powerup_types["attack_powerup"] = attack_powerup
