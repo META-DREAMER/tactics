@@ -19,7 +19,6 @@ class powerup(Sprite):
     def __init__(self,
                  tile_x = None,
                  tile_y = None,
-                 angle = 0,
                  activate = False,
                  **keywords):
         Sprite.__init__(self)

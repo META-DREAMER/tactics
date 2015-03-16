@@ -464,6 +464,41 @@ class GUI(LayeredUpdates):
             line = map_file.readline()
             if line == "":
                 raise Exception ("Expected end of unit definitions")
+
+        # Move up to the unit definitions
+        while line.find("POWER-UPS START") < 0:
+            line = map_file.readline()
+            if line == "":
+                raise Exception ("Expected powerup definitions")
+        line = map_file.readline()
+        
+        # Create the units
+        while line.find("POWER-UPS END") < 0:
+            line = line.rstrip()
+            line = line.split(' ')
+            powerup_name = line[0]
+            powerup_x, powerup_y = int(line[1]), int(line[2])
+            if len(line) != 3:
+                raise Exception("Invalid definition of " + powerup_name)
+
+            if not powerup_name in powerups.powerup_types:
+                raise Exception("No powerup of name {} found!".format(powerup_name))
+            new_powerup = powerups.powerup_types[powerup_name](tile_x = powerup_x,
+                                                              tile_y = powerup_y,
+                                                              activate = True)
+
+            if unit_name == "Transport":
+                if len(line) != 6:
+                    raise Exception("Missing capacity in Transport definition?")
+                unit_cap = int(line[5])
+                new_unit.capacity = unit_cap
+
+            # Add the unit to the update group and set its display rect
+            self.update_unit_rect(new_unit)
+            
+            line = map_file.readline()
+            if line == "":
+                raise Exception ("Expected end of unit definitions")
         
     def on_click(self, e):
         """
