@@ -487,12 +487,12 @@ class GUI(LayeredUpdates):
                                                               tile_y = powerup_y,
                                                               activate = True)
 
-            # Add the unit to the update group and set its display rect
-            self.update_unit_rect(new_unit)
+            # Add the powerup to the update group and set its display rect
+            self.update_powerup_rect(new_powerup)
             
             line = map_file.readline()
             if line == "":
-                raise Exception ("Expected end of unit definitions")
+                raise Exception ("Expected end of powerup definitions")
         
     def on_click(self, e):
         """
