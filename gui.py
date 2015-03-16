@@ -487,12 +487,6 @@ class GUI(LayeredUpdates):
                                                               tile_y = powerup_y,
                                                               activate = True)
 
-            if unit_name == "Transport":
-                if len(line) != 6:
-                    raise Exception("Missing capacity in Transport definition?")
-                unit_cap = int(line[5])
-                new_unit.capacity = unit_cap
-
             # Add the unit to the update group and set its display rect
             self.update_unit_rect(new_unit)
             
