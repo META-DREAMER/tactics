@@ -27,7 +27,6 @@ class powerup(Sprite):
         # Take the keywords off
         self.tile_x = tile_x
         self.tile_y = tile_y
-        self._angle = angle
         #set default active state to be false
         self._active = False
         #set required pygame things.
@@ -42,7 +41,7 @@ class powerup(Sprite):
     @staticmethod
     def get_powerup_at_pos(pos):
         """
-        Returns the active powerup at the given tile position, or None if no unit
+        Returns the active powerup at the given tile position, or None if no powerup
         is present.
         """
         for p in powerup.active_powerups:
@@ -70,7 +69,7 @@ class powerup(Sprite):
         Re-renders the powerup's image.
         """
         # Pick out the right sprite depending on the team
-        subrect = pygame.Rect(self.team * SIZE,
+        subrect = pygame.Rect(0,
                               0,
                               self.rect.w,
                               self.rect.h)
@@ -86,20 +85,20 @@ class powerup(Sprite):
             return
         
         # Rotate the sprite
-        self.image = pygame.transform.rotate(subsurf, self._angle)
+        self.image = pygame.transform.rotate(subsurf, 0)
 
     def activate(self):
         """
-        Adds this unit to the active roster.
+        Adds this powerup to the active roster.
         """
         if not self._active:
             self._active = True
-            BaseUnit.active_units.add(self)
+            powerup.active_powerups.add(self)
     
     def deactivate(self):
         """
-        Removes this unit from the active roster.
+        Removes this powerup from the active roster.
         """
         if self._active:
             self._active = False
-            BaseUnit.active_units.remove(self)
+            powerup.active_powerups.remove(self)
