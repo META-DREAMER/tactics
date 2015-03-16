@@ -656,6 +656,7 @@ class GUI(LayeredUpdates):
                 cost,
                 passable))
 
+        
         print("Done Moving")
         print(self.get_powerup_at_screen_pos(pos))
 

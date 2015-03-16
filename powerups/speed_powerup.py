@@ -30,7 +30,8 @@ class speed_powerup(powerup):
         Upgrades the speed of unit at given tile position by 2
         """
 
-        print("activating powerup")
+        print("activating powerup at pos:")
+        print(pos)
         print(unit.base_unit.BaseUnit.get_unit_at_pos(pos))
         powerup_unit = unit.base_unit.BaseUnit.get_unit_at_pos(pos)
         powerup_unit.speed += 2
