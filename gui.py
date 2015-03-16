@@ -296,6 +296,7 @@ class GUI(LayeredUpdates):
 
         # The currently selected unit
         self.sel_unit = None
+        self.sel_powerup = None
         
         # Set up GUI
         self.buttons = [
@@ -665,11 +666,12 @@ class GUI(LayeredUpdates):
 
         if (self.get_powerup_at_screen_pos(pos)):
             print("Powerup found")
-            powerup_found = True
-            PUP = self.get_powerup_at_screen_pos(pos)
-            print(PUP)
+            # powerup_found = True
 
-            # PUP.activate_powerup(pos)
+            self.sel_powerup = self.get_powerup_at_screen_pos(pos)
+            print(self.sel_powerup)
+
+            # PUP.activate_powerup()
 
                 
     def get_unit_at_screen_pos(self, pos):
@@ -723,6 +725,9 @@ class GUI(LayeredUpdates):
         if self.mode == Modes.Moving:
             if (not self.sel_unit) or (not self.sel_unit.is_moving):
                 self.change_mode(Modes.Select)
+                self.sel_powerup.activate_powerup()
+            # if powerup_found:
+            #     PUP.activate_powerup(pos)
                 
         # Update the reticle effect
         self._reticle.update()

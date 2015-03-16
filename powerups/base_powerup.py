@@ -27,8 +27,12 @@ class powerup(Sprite):
         # Take the keywords off
         self.tile_x = tile_x
         self.tile_y = tile_y
+
+        self.found = False
+
         #set default active state to be false
         self._active = False
+
         #set required pygame things.
         self.image = None
         self.rect = pygame.Rect(0, 0, SIZE, SIZE)
