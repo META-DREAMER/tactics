@@ -104,4 +104,3 @@ class powerup(Sprite):
         if self._active:
             self._active = False
             powerup.active_powerups.remove(self)
-            print("deactivated")
