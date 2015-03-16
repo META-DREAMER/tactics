@@ -724,6 +724,11 @@ class GUI(LayeredUpdates):
                 self.screen,
                 self.sel_unit.rect,
                 SELECT_COLOR)
+
+        #draw powerups
+        for p in base_powerup.powerup.active_powerups:
+            self.update_powerup_rect(p)
+        base_powerup.powerup.active_powerups.draw(self.screen)
                 
         # Mark potential targets
         for tile_pos in self._attackable_tiles:
