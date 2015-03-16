@@ -28,8 +28,6 @@ class powerup(Sprite):
         self.tile_x = tile_x
         self.tile_y = tile_y
 
-        self.found = False
-
         #set default active state to be false
         self._active = False
 
@@ -106,3 +104,4 @@ class powerup(Sprite):
         if self._active:
             self._active = False
             powerup.active_powerups.remove(self)
+            print("deactivated")
