@@ -52,6 +52,9 @@ TEAM_NAME = {
     1: "red"
 }
 
+#initialize powerup flag
+powerup_found = False
+
 # Possible GUI modes
 # http://stackoverflow.com/questions/702834/whats-the-common-practice-
 # for-enums-in-python
@@ -662,11 +665,11 @@ class GUI(LayeredUpdates):
 
         if (self.get_powerup_at_screen_pos(pos)):
             print("Powerup found")
+            powerup_found = True
             PUP = self.get_powerup_at_screen_pos(pos)
             print(PUP)
-            tile_pos = self.map.tile_coords(pos)
-            
-            PUP.activate_powerup(pos)
+
+            # PUP.activate_powerup(pos)
 
                 
     def get_unit_at_screen_pos(self, pos):
