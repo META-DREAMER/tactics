@@ -656,7 +656,7 @@ class GUI(LayeredUpdates):
                 cost,
                 passable))
 
-        if (get_powerup_at_screen_pos(pos)):
+        if (self.get_powerup_at_screen_pos(pos)):
             PUP = get_powerup_at_screen_pos(pos)
             tile_pos = self.map.tile_coords(pos)
             PUP.activate_powerup(tile_pos)
