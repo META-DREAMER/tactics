@@ -11,6 +11,8 @@ Artillery 0 28 7 180
 Artillery 0 28 8 180
 Anti-Armour 0 28 13 180
 Anti-Armour 0 28 14 180
+PT_boat 0 28 16 90
+PT_boat 0 16 29 180
 Carrier 0 22 26 90
 Fighter 0 21 26 90
 Bomber 0 23 26 90
@@ -22,4 +24,12 @@ Tank 1 23 14 0
 Carrier 1 22 18 90
 Fighter 1 21 18 90
 Bomber 1 23 18 90
+PT_boat 1 11 2 0
+PT_boat 1 3 15 270
 UNITS END
+
+POWER-UPS START
+healthpack_powerup 28 21
+speed_powerup 13 8
+attack_powerup 15 9
+POWER-UPS END

@@ -26,7 +26,8 @@ def gather(transport, unit_list, value):
     """
 
     gathered = list()
-    
+    print("list of eligible units")
+    print(unit_list)
     # the unused capacity of the transport
     remain = transport.capacity
 
@@ -37,12 +38,28 @@ def gather(transport, unit_list, value):
     # (e.g. running this on the cluster of troops in the lower-left corner
     # of the level many.lvl will find a sub-optimal solution
     # when value(unit) is the remainnig health of the unit)
-
+    """
     for u in unit_list:
         if u.unit_size <= remain:
             gathered.append(u)
             remain -= u.unit_size
+    """
+    numUnits = len(unit_list)
+    print("num units:")
+    print(numUnits)
+    Matrix = [[0 for i in range(numUnits)] for x in range(remain)]
+    for u in range(numUnits):
+        for w in range(transport.capacity):
+            print("item no. in unit list")
+            print(u)
+            print("capacity of transport")
+            print(w)
+            print(int(Matrix[u-1][w]))
+            Matrix[u][w] = max(Matrix[u-1][w], Matrix[u-1][w-unit_list[u].unit_size] + Matrix[u][w])
 
+    print("Max. no. of units to load")
+    print(max(Matrix[len(unit_list)][remain]))		
+	
     # return the list of units from an optimal solution
     # note, in particular, that we have not actually loaded them here
     return gathered
