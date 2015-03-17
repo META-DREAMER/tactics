@@ -671,8 +671,7 @@ class GUI(LayeredUpdates):
         """
         # Get the unit's tile position.
         tile_pos = self.map.tile_coords(pos)
-        print("getting units at tile position: ")
-        print(tile_pos)
+
         return unit.base_unit.BaseUnit.get_unit_at_pos(tile_pos)
 
     def get_powerup_at_screen_pos(self, pos):
@@ -680,8 +679,7 @@ class GUI(LayeredUpdates):
         Gets the powerup at a specified screen position ((x,y) tuple).
         Returns None if no unit.
         """
-        print("getting powerups at screen position: ")
-        print(pos)
+
         return powerups.base_powerup.powerup.get_powerup_at_pos(pos)
         
     def update_unit_rect(self, unit):
