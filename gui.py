@@ -52,8 +52,7 @@ TEAM_NAME = {
     1: "red"
 }
 
-#initialize powerup flag
-powerup_found = False
+
 
 # Possible GUI modes
 # http://stackoverflow.com/questions/702834/whats-the-common-practice-
